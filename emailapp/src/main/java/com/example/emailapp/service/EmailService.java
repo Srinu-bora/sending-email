@@ -30,6 +30,19 @@ public class EmailService {
         emailSender.send(message);
         return String.valueOf(otp);
     }
+    public boolean sendVerificationEmail(String to) {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(to);
+            message.setSubject("Email Verification");
+            message.setText("Please verify your email by clicking this link...");
+            emailSender.send(message);
+            return true;
+        } catch (Exception e) {
+            // Log the exception
+            return false;
+        }
+    }
 }
 
 
